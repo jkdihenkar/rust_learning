@@ -9,5 +9,8 @@
 * Not for Web in 2020. Growing in Embedded community. 
 * Steep learning curve takes you to the depth of the basics of Memory Management and core CS features.
 
+## Learning reference book
+* https://doc.rust-lang.org/book/title-page.html
+
 ## Next?
 * https://learning-rust.github.io/docs/a1.why_rust.html
