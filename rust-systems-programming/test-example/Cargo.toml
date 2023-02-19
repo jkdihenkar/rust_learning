@@ -1,0 +1,22 @@
+[package]
+name = "test-example"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+default-run = "test-example"
+
+[[bin]]
+name = "test-example"
+path = "src/main.rs"
+
+[[bin]]
+name = "second-test-example"
+path = "src/second.rs"
+
+[lib]
+name = "process_lib"
+path = "lib/lib.rs"
+
+[dependencies]
