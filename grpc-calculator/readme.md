@@ -2,6 +2,30 @@
 
 A simple Add calculator built using the gRPC in rust with tonic.
 
+## Running the project
+Server:
+```sh
+❯❯❯ cargo run --bin server
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.08s
+     Running `target/debug/grpc-calculator`
+Got a request: Request { metadata: MetadataMap { headers: {"content-type": "application/grpc", "user-agent": "grpcurl/1.8.7 grpc-go/1.48.0", "te": "trailers"} }, message: CalculationRequest { a: 3, b: 2 }, extensions: Extensions }
+Got a request: Request { metadata: MetadataMap { headers: {"content-type": "application/grpc", "user-agent": "grpcurl/1.8.7 grpc-go/1.48.0", "te": "trailers"} }, message: CalculationRequest { a: 3, b: 2 }, extensions: Extensions }
+Got a request: Request { metadata: MetadataMap { headers: {"content-type": "application/grpc", "user-agent": "grpcurl/1.8.7 grpc-go/1.48.0", "te": "trailers"} }, message: CalculationRequest { a: 1, b: 2 }, extensions: Extensions }
+...
+...
+```
+
+Client:
+```sh
+❯❯❯ cargo run --bin client
+   Compiling grpc-calculator v0.1.0 (/Users/jaydihenkar/work/rust_learning/grpc-calculator)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.51s
+     Running `target/debug/client`
+Got response: 55
+```
+
+# Additional Utilities
+
 Some gRPC helper utilities:
 - grpcurl (`brew install grpcurl`)
 - grpcui (`brew install grpcui`)
