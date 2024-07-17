@@ -55,9 +55,17 @@ calculator.Calculator
 grpc.reflection.v1alpha.ServerReflection
 ```
 
+Error handling with the gRPC status for Bad Data
+```sh
+❯❯❯ grpcurl -plaintext  -d '{"a": 3, "b": 0}' 'localhost:50051' calculator.Calculator.Divide
+ERROR:
+  Code: InvalidArgument
+  Message: Cannot Divide by 0!
+```
+
 ## `grpcui` usages
 
-Invoke the gRPC UI on the server - 
+Invoke the gRPC UI on the server -
 ```sh
 ❯ grpcui -plaintext 'localhost:50051'
 gRPC Web UI available at http://127.0.0.1:61153/
@@ -68,3 +76,7 @@ UI for request:
 
 Response on UI:
 ![response-ui](assets/image2.png)
+
+gRPC UI for Invalid Data:
+![response-ui](assets/image3.png)
+
