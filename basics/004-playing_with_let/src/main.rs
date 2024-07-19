@@ -1,4 +1,3 @@
-
 fn main() {
     // playing with scopes and blocks
     let x = "out";
@@ -12,16 +11,14 @@ fn main() {
     // blocks are also expressions and can be evaluated to a value
 
     // example - 1
-    let k = {
-        7
-    };
+    let k = { 7 };
     println!("k={}", k);
 
     // example - 2
     let x = {
         let x = 27;
         let y = 3;
-        y+x
+        y + x
     };
     println!("x={}", x);
 
@@ -59,7 +56,7 @@ fn main() {
     }
 
     println!("v4({})={}", feeling_luck, fair_roll_dice_v4(feeling_luck));
-    
+
     // usgae of dots - example 1
     let a = ("some", 'r', 227);
     println!("a(0,1,2) = ( {}, {}, {} )", a.0, a.1, a.2);
@@ -84,46 +81,77 @@ fn main() {
     struct StrucExample {
         first_int: i32,
         second_float: f64,
-        third_bool: bool
+        third_bool: bool,
     }
 
     // when init - order doesn't matter only the names do
-    let struc_1 = StrucExample {first_int: 23, second_float: 445.678, third_bool: true};
+    let struc_1 = StrucExample {
+        first_int: 23,
+        second_float: 445.678,
+        third_bool: true,
+    };
     println!("struc_1.second_float = {}", struc_1.second_float);
     println!(
-        "struc_1 = first_int: {}, second_float: {}, third_bool: {}", 
+        "struc_1 = first_int: {}, second_float: {}, third_bool: {}",
         struc_1.first_int, struc_1.second_float, struc_1.third_bool
     );
 
     // shortcut for init the rest of the fields from other struct
-    let struc_2 = StrucExample { third_bool: false, ..struc_1};
+    let struc_2 = StrucExample {
+        third_bool: false,
+        ..struc_1
+    };
     println!(
-        "struc_2 = first_int: {}, second_float: {}, third_bool: {}", 
+        "struc_2 = first_int: {}, second_float: {}, third_bool: {}",
         struc_2.first_int, struc_2.second_float, struc_2.third_bool
     );
 
     // structs can also be deconstructed like tuples
-    let struc_3 = StrucExample {..struc_2};
+    let struc_3 = StrucExample { ..struc_2 };
     // struct field names are now mandatory as opposed to shown in old examples
-    let StrucExample {first_int: a, second_float: b, third_bool: c} = struc_3;
+    let StrucExample {
+        first_int: a,
+        second_float: b,
+        third_bool: c,
+    } = struc_3;
     println!("a={}, b={}, c={}", a, b, c);
 
     // let patterns can be used as conditions and also in match arm
     struct Number {
         odd: bool,
-        value: i32
+        value: i32,
     }
 
-    let one = Number {odd: true, value: 1};
-    let two = Number {odd: false, value: 2};
-    let three = Number {odd: true, value: 3};
-    let four = Number {odd: false, value: 4};
+    let one = Number {
+        odd: true,
+        value: 1,
+    };
+    let two = Number {
+        odd: false,
+        value: 2,
+    };
+    let three = Number {
+        odd: true,
+        value: 3,
+    };
+    let four = Number {
+        odd: false,
+        value: 4,
+    };
 
     // let as conditions in if
     fn print_number_v1(n: Number) {
-        if let Number {odd: true, value: v} = n {
+        if let Number {
+            odd: true,
+            value: v,
+        } = n
+        {
             println!("odd Number {}", v);
-        } else if let Number {odd: false, value: v} = n {
+        } else if let Number {
+            odd: false,
+            value: v,
+        } = n
+        {
             println!("even Number {}", v);
         }
     }
@@ -134,8 +162,14 @@ fn main() {
     // conditions in match arm
     fn print_number_v2(n: Number) {
         match n {
-            Number {odd: true, value: v} => println!("Odd Number - {}", v),
-            Number {odd: false, value: v} => println!("Even Number = {}", v)
+            Number {
+                odd: true,
+                value: v,
+            } => println!("Odd Number - {}", v),
+            Number {
+                odd: false,
+                value: v,
+            } => println!("Even Number = {}", v),
         }
     }
 
@@ -145,12 +179,12 @@ fn main() {
     // match arms have to be exhaustive else we'd get a compile time error
     fn print_number_v3(n: Number) {
         match n {
-            Number {value: 1, ..} => println!("One"),
-            Number {value: 2, ..} => println!("Two"),
-            Number {value, ..} => println!("{}", value)
+            Number { value: 1, .. } => println!("One"),
+            Number { value: 2, .. } => println!("Two"),
+            Number { value, .. } => println!("{}", value),
         }
-        // error[E0004]: non-exhaustive patterns: `Number { value: i32::MIN..=0_i32, .. }` 
-            // and `Number { value: 3_i32..=i32::MAX, .. }` not covered
+        // error[E0004]: non-exhaustive patterns: `Number { value: i32::MIN..=0_i32, .. }`
+        // and `Number { value: 3_i32..=i32::MAX, .. }` not covered
     }
 
     // if that's hard underscores can also be used as 'catch-all'
@@ -158,15 +192,27 @@ fn main() {
         match n.value {
             1 => println!("One"),
             2 => println!("Two"),
-            _ => println!("{}", n.value)
+            _ => println!("{}", n.value),
         }
     }
 
     // have to init these once again coz their values are moved
-    let one = Number {odd: true, value: 1};
-    let two = Number {odd: false, value: 2};
-    let three = Number {odd: true, value: 3};
-    let four = Number {odd: false, value: 4};
+    let one = Number {
+        odd: true,
+        value: 1,
+    };
+    let two = Number {
+        odd: false,
+        value: 2,
+    };
+    let three = Number {
+        odd: true,
+        value: 3,
+    };
+    let four = Number {
+        odd: false,
+        value: 4,
+    };
 
     print_number_v3(one);
     print_number_v4(two);
@@ -180,7 +226,10 @@ fn main() {
         }
     }
 
-    let minus_one = Number {odd: true, value: -1};
+    let minus_one = Number {
+        odd: true,
+        value: -1,
+    };
 
     println!("is minus_one positive? - {}", minus_one.is_positive());
 
@@ -193,5 +242,4 @@ fn main() {
     println!("x = {}", x);
     x = 47;
     println!("x = {}", x);
-
 }
