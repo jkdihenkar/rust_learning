@@ -11,4 +11,5 @@ right of (something_x_new) is _new
 
 ## Learning notes
 
-`let`, simple data types, `tuples.rs`, functions, `blocks.rs`, `structs.rs`
+- Basics :: `let`, simple data types, `tuples.rs`, functions, `blocks.rs`, `structs.rs`
+- Patterns and Destructuring :: `patterns_destructure.rs`

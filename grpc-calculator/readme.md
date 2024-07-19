@@ -2,6 +2,8 @@
 
 A simple Add calculator built using the gRPC in rust with tonic.
 
+This sample project also aims to implement a model gRPC API service in rust.
+
 ## Running the project
 Server:
 ```sh
@@ -79,4 +81,3 @@ Response on UI:
 
 gRPC UI for Invalid Data:
 ![response-ui](assets/image3.png)
-
